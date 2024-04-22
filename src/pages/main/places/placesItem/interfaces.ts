@@ -1,4 +1,4 @@
-export interface PlaceItemProps {
+export interface PlacesItemProps {
     item: {
         img: string;
         price: string;

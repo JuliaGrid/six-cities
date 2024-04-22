@@ -1,6 +1,6 @@
-import { Header } from '../../components/header/header';
-import { Tabs } from '../../components/tabs/tabs';
-import { Places } from './places/places';
+import { Header } from '../../components/Header/Header';
+import { Tabs } from '../../components/Tabs/Tabs';
+import { Places } from './Places/Places';
 
 export function Main() {
   return (

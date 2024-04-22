@@ -1,8 +1,8 @@
 import { generatePath, Link } from 'react-router-dom';
 import { AppRoutes } from '../../../../constants';
-import { PlaceItemProps } from './interfaces';
+import { PlacesItemProps } from './interfaces';
 
-export function PlaceItem(props: PlaceItemProps) {
+export function PlacesItem(props: PlacesItemProps) {
   const { item } = props;
   const {img, price, name, type, id} = item;
 
@@ -35,7 +35,7 @@ export function PlaceItem(props: PlaceItemProps) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{name}</a>
+          <Link to={path}>{name}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

@@ -1,6 +1,6 @@
 import { PlaceType } from './interfaces';
 
-export const placesInfo = [
+export const PLACES_INFO = [
   {
     img: 'img/room.jpg',
     price: '80',

@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Favorites } from '../../pages/favorites/favorites';
-import { Login } from '../../pages/login/login';
-import { Main } from '../../pages/main/main';
-import { NotFound } from '../../pages/notFound/notFound';
-import { Property } from '../../pages/property/property';
-import { PrivateRoute } from '../privateRoute/privateRoute';
+import { Main } from '../../pages/Main/Main';
+import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
 import { AppRoutes, AuthStatuses } from '../../constants';
+import { Login } from '../../pages/Login/Login';
+import { Favorites } from '../../pages/Favorites/Favorites';
+import { Property } from '../../pages/Property/Property';
+import { NotFound } from '../../pages/NotFound/NotFound';
 
 function App(): JSX.Element {
   return (

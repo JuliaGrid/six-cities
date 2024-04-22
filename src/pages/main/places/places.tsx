@@ -1,6 +1,6 @@
-import { placesInfo } from './constants';
-import { PlaceItem } from './placesItem/placeItem';
+import { PLACES_INFO } from './constants';
+import { PlacesItem } from './PlacesItem/PlacesItem';
 
 export function Places() {
-  return <>{placesInfo.map((item) => <PlaceItem item={item} key={item.id} />)}</>;
+  return <>{PLACES_INFO.map((item) => <PlacesItem item={item} key={item.id} />)}</>;
 }
