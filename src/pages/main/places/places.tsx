@@ -1,4 +1,5 @@
-import { PLACES_INFO } from './constants';
+
+import { PLACES_INFO } from '../../../mocks/mocks';
 import { PlacesItem } from './PlacesItem/PlacesItem';
 
 export function Places() {

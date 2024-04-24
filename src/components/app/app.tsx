@@ -4,7 +4,7 @@ import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
 import { AppRoutes, AuthStatuses } from '../../constants';
 import { Login } from '../../pages/Login/Login';
 import { Favorites } from '../../pages/Favorites/Favorites';
-import { Property } from '../../pages/Property/Property';
+import { Room } from '../../pages/Room/Room';
 import { NotFound } from '../../pages/NotFound/NotFound';
 
 function App(): JSX.Element {
@@ -29,7 +29,7 @@ function App(): JSX.Element {
         />
         <Route
           path={AppRoutes.Room}
-          element={<Property />}
+          element={<Room />}
         />
         <Route
           path='*'

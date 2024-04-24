@@ -5,5 +5,7 @@ export interface PlacesItemProps {
         name: string;
         type: string;
         id: string;
+        isFavorite: boolean;
+        isPremium: boolean;
     };
 }
