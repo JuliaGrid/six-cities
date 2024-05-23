@@ -1,9 +1,22 @@
 import { Header } from '../../components/Header/Header';
 import { Tabs } from '../../components/Tabs/Tabs';
+import { Map } from '../../components/Map/Map';
 import { Places } from './Places/Places';
 import { Sorting } from './Sorting/Sorting';
+import { CITY, POINTS } from './constants';
+import { useState } from 'react';
+
 
 export function Main() {
+  const [selectedPoint, setSelectedPoint] = useState<string | undefined>();
+
+  const onListItemHover = (listItemName: string) => {
+    const currentPoint = POINTS.find((point) =>
+      point.name === listItemName,
+    );
+    setSelectedPoint(currentPoint?.name);
+  };
+
   return (
     <>
       <div style={{ display: 'none' }}>
@@ -24,11 +37,13 @@ export function Main() {
                 <b className="places__found">312 places to stay in Amsterdam</b>
                 <Sorting />
                 <div className="cities__places-list places__list tabs__content">
-                  <Places />
+                  <Places onListItemHover={onListItemHover} />
                 </div>
               </section>
               <div className="cities__right-section">
-                <section className="cities__map map"></section>
+                <section className="cities__map map">
+                  <Map city={CITY} points={POINTS} selectedPoint={selectedPoint} />
+                </section>
               </div>
             </div>
           </div>

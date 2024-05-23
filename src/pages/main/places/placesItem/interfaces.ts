@@ -8,4 +8,5 @@ export interface PlacesItemProps {
         isFavorite: boolean;
         isPremium: boolean;
     };
+    onListItemHover: (listItemName: string) => void;
 }

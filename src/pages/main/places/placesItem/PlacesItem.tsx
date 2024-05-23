@@ -5,7 +5,7 @@ import { AppRoutes } from '../../../../constants';
 import { PlacesItemProps } from './interfaces';
 
 export function PlacesItem(props: PlacesItemProps) {
-  const { item } = props;
+  const { item, onListItemHover } = props;
   const { img, price, name, type, id, isFavorite, isPremium } = item;
   const [isFavoriteState, setIsFavoriteState] = useState(isFavorite);
 
@@ -16,8 +16,16 @@ export function PlacesItem(props: PlacesItemProps) {
     e.currentTarget.blur();
   };
 
+  const listItemHoverHandler = () => {
+    onListItemHover(item.name);
+  };
+
+  const listItemLeaveHandler = () => {
+    onListItemHover('');
+  };
+
   return (
-    <article className="cities__card place-card">
+    <article className="cities__card place-card" onMouseEnter={listItemHoverHandler} onMouseLeave={listItemLeaveHandler}>
       {isPremium &&
       <div className="place-card__mark">
         <span>Premium</span>
