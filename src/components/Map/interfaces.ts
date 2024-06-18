@@ -9,6 +9,7 @@ export type City = {
 };
 
 export type Point = {
-    name: string;
+    id: number;
+    title: string;
     position: [number, number];
 };

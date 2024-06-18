@@ -1,23 +1,23 @@
 import classNames from 'classnames';
-import { useState, MouseEvent } from 'react';
 import { generatePath, Link } from 'react-router-dom';
 import { AppRoutes } from '../../../../constants';
+import { useAppDispatch } from '../../../../hooks/useAppDispatch/useAppDispatch';
+import { markFavorite } from '../../../../store/action';
 import { PlacesItemProps } from './interfaces';
 
 export function PlacesItem(props: PlacesItemProps) {
   const { item, onListItemHover } = props;
-  const { img, price, name, type, id, isFavorite, isPremium } = item;
-  const [isFavoriteState, setIsFavoriteState] = useState(isFavorite);
+  const { previewImage, price, title, type, id, isFavorite, isPremium } = item;
+  const dispatch = useAppDispatch();
 
-  const path = generatePath(AppRoutes.Room, { id });
+  const path = generatePath(AppRoutes.Room, { id: String(id) });
 
-  const changeIsFavorite = (e: MouseEvent<HTMLButtonElement>) => {
-    setIsFavoriteState((prev) => !prev);
-    e.currentTarget.blur();
+  const changeIsFavorite = () => {
+    dispatch(markFavorite({ hotelId: +id}));
   };
 
   const listItemHoverHandler = () => {
-    onListItemHover(item.name);
+    onListItemHover(item.title);
   };
 
   const listItemLeaveHandler = () => {
@@ -32,7 +32,7 @@ export function PlacesItem(props: PlacesItemProps) {
       </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={path}>
-          <img className="place-card__image" src={img} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image" />
         </Link>
       </div>
       <div className="place-card__info">
@@ -41,7 +41,7 @@ export function PlacesItem(props: PlacesItemProps) {
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={classNames('place-card__bookmark-button button', { 'place-card__bookmark-button--active': isFavoriteState })} type="button" onClick={changeIsFavorite}>
+          <button className={classNames('place-card__bookmark-button button', { 'place-card__bookmark-button--active': isFavorite })} type="button" onClick={changeIsFavorite}>
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
@@ -55,7 +55,7 @@ export function PlacesItem(props: PlacesItemProps) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={path}>{name}</Link>
+          <Link to={path}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

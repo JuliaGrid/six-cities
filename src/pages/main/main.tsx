@@ -3,18 +3,28 @@ import { Tabs } from '../../components/Tabs/Tabs';
 import { Map } from '../../components/Map/Map';
 import { Places } from './Places/Places';
 import { Sorting } from './Sorting/Sorting';
-import { CITY, POINTS } from './constants';
+import { CITY } from './constants';
 import { useState } from 'react';
+import { useAppSelector } from '../../hooks/useAppDispatch/useAppDispatch';
+import { Point } from '../../components/Map/interfaces';
 
 
 export function Main() {
   const [selectedPoint, setSelectedPoint] = useState<string | undefined>();
+  const hotels = useAppSelector((state) => state.hotels);
+
+  const points: Point[] = hotels.map((item) => ({
+    title: item.title,
+    id: item.id,
+    position: [item.location.latitude, item.location.longitude]
+  }));
+
 
   const onListItemHover = (listItemName: string) => {
-    const currentPoint = POINTS.find((point) =>
-      point.name === listItemName,
+    const currentPoint = points.find((point) =>
+      point.title === listItemName,
     );
-    setSelectedPoint(currentPoint?.name);
+    setSelectedPoint(currentPoint?.title);
   };
 
   return (
@@ -42,7 +52,7 @@ export function Main() {
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <Map city={CITY} points={POINTS} selectedPoint={selectedPoint} />
+                  <Map city={CITY} points={points} selectedPoint={selectedPoint} />
                 </section>
               </div>
             </div>

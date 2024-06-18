@@ -14,7 +14,7 @@ export function Map(props: MapProps) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
         url='https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
       />
-      {points.map((item) => <Marker position={item.position} name={item.name} selectedPoint={selectedPoint} key={item.name} />)}
+      {points.map((item) => <Marker position={item.position} name={item.title} selectedPoint={selectedPoint} key={item.id} />)}
     </MapContainer>
   );
 }
