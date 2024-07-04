@@ -10,7 +10,6 @@ import { Point } from '../../components/Map/interfaces';
 import { store } from '../../store';
 import { fetchHotelsAction } from '../../store/api-actions';
 
-
 export function Main() {
   const [selectedPoint, setSelectedPoint] = useState<string | undefined>();
 
@@ -27,7 +26,6 @@ export function Main() {
     position: [item.location.latitude, item.location.longitude]
   }));
 
-
   const onListItemHover = (listItemName: string) => {
     const currentPoint = points.find((point) =>
       point.title === listItemName,
@@ -35,7 +33,9 @@ export function Main() {
     setSelectedPoint(currentPoint?.title);
   };
 
-  console.log(isHotelsDataLoading);
+  /** TODO: решить проблему с обновлением стейта при наведении на карточку */
+  // console.log('hotels', hotels);
+  // console.log('isHotelsDataLoading', isHotelsDataLoading);
 
   return (
     <>

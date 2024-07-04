@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Header } from '../../components/Header/Header';
-import { useAppSelector } from '../../hooks/useAppDispatch/useAppDispatch';
 import { store } from '../../store';
 import { fetchFavoriteAction } from '../../store/api-actions';
 
@@ -9,9 +8,8 @@ export function Favorites() {
     store.dispatch(fetchFavoriteAction());
   }, []);
 
-  const favorite = useAppSelector((state) => state.favorite);
-
-  console.log(favorite);
+  /** TODO: убрать хардкод */
+  // const favorite = useAppSelector((state) => state.favorite);
 
   return (
     <div className="page">

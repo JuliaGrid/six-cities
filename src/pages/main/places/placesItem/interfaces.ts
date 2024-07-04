@@ -1,5 +1,7 @@
+import { Hotel } from '../../../../store/interfaces';
+
 export interface PlacesItemProps {
-    item: Item;
+    item: Hotel;
     onListItemHover: (listItemName: string) => void;
 }
 

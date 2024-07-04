@@ -8,6 +8,16 @@ export type InitalState = {
     error: string | null;
 }
 
+export enum FavoriteStatus {
+    Favorite = 1,
+    NotFavorite = 2
+}
+
+export type ChangeFavorite = {
+    hotelId: number;
+    status: FavoriteStatus;
+}
+
 export type AuthData = {
     email: string;
     password: string;
