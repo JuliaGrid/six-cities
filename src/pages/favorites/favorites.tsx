@@ -1,6 +1,18 @@
+import { useEffect } from 'react';
 import { Header } from '../../components/Header/Header';
+import { useAppSelector } from '../../hooks/useAppDispatch/useAppDispatch';
+import { store } from '../../store';
+import { fetchFavoriteAction } from '../../store/api-actions';
 
 export function Favorites() {
+  useEffect(() => {
+    store.dispatch(fetchFavoriteAction());
+  }, []);
+
+  const favorite = useAppSelector((state) => state.favorite);
+
+  console.log(favorite);
+
   return (
     <div className="page">
       <Header />

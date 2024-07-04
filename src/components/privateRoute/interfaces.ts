@@ -1,6 +1,6 @@
-import { AuthStatuses } from '../../constants';
+import { AuthorizationStatus } from '../../constants';
 
 export interface PrivateRouteProps {
-    authStatus: AuthStatuses;
+    authStatus: AuthorizationStatus;
     children: JSX.Element;
 }

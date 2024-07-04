@@ -4,14 +4,22 @@ import { Map } from '../../components/Map/Map';
 import { Places } from './Places/Places';
 import { Sorting } from './Sorting/Sorting';
 import { CITY } from './constants';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../hooks/useAppDispatch/useAppDispatch';
 import { Point } from '../../components/Map/interfaces';
+import { store } from '../../store';
+import { fetchHotelsAction } from '../../store/api-actions';
 
 
 export function Main() {
   const [selectedPoint, setSelectedPoint] = useState<string | undefined>();
+
+  useEffect(() => {
+    store.dispatch(fetchHotelsAction('Amsterdam'));
+  }, []);
+
   const hotels = useAppSelector((state) => state.hotels);
+  const isHotelsDataLoading = useAppSelector((state) => state.isHotelsDataLoading);
 
   const points: Point[] = hotels.map((item) => ({
     title: item.title,
@@ -26,6 +34,8 @@ export function Main() {
     );
     setSelectedPoint(currentPoint?.title);
   };
+
+  console.log(isHotelsDataLoading);
 
   return (
     <>
@@ -47,7 +57,7 @@ export function Main() {
                 <b className="places__found">312 places to stay in Amsterdam</b>
                 <Sorting />
                 <div className="cities__places-list places__list tabs__content">
-                  <Places onListItemHover={onListItemHover} />
+                  {isHotelsDataLoading ? <>loading</> : <Places onListItemHover={onListItemHover} />}
                 </div>
               </section>
               <div className="cities__right-section">

@@ -1,13 +1,22 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Main } from '../../pages/Main/Main';
 import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
-import { AppRoutes, AuthStatuses } from '../../constants';
+import { AppRoutes, AuthorizationStatus } from '../../constants';
 import { Login } from '../../pages/Login/Login';
 import { Favorites } from '../../pages/Favorites/Favorites';
 import { Room } from '../../pages/Room/Room';
 import { NotFound } from '../../pages/NotFound/NotFound';
+import { useAppSelector } from '../../hooks/useAppDispatch/useAppDispatch';
 
 function App(): JSX.Element {
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+
+  if (authorizationStatus === AuthorizationStatus.Unknown) {
+    return (
+      <div></div>
+    );
+  }
+
   return (
     <BrowserRouter>
       <Routes>
@@ -16,13 +25,17 @@ function App(): JSX.Element {
           element={<Main/>}
         />
         <Route
+          path={AppRoutes.City}
+          element={<Main />}
+        />
+        <Route
           path={AppRoutes.Login}
           element={<Login />}
         />
         <Route
           path={AppRoutes.Favorites}
           element={
-            <PrivateRoute authStatus={AuthStatuses.Auth}>
+            <PrivateRoute authStatus={AuthorizationStatus.Auth}>
               <Favorites />
             </PrivateRoute>
           }
