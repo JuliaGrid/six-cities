@@ -1,3 +1,28 @@
+###### *Разметка предоставлена HTML-Академией*
+
+## Используемые технологии
+
+---
+
+`React`, `TypeScript`, `Redux Toolkit`, `Redux Thunk`, `Axios`, `Leaflet`
+
+---
+
+## TODO-лист
+
+- *api-actions.ts* - TODO: создать флаг загрузки
+- *Main.tsx - TODO:* решить проблему с обновлением стейта при наведении на карточку
+- *Favorites.tsx* - TODO: убрать хардкод
+
+## Идеи по улучшению
+
+- Добавить темную тему 
+- React Lazy
+- Добавить тесты
+- Перевод статичного текста
+- Подключить storybook
+
+
 # Руководство по работе с проектом
 
 Данный проект создан с помощью [Create React App](https://github.com/facebook/create-react-app).
